@@ -47,7 +47,7 @@ declare class UssdMenu extends EventEmitter {
     mapArgs(args: UssdMenu.UssdGatewayArgs | UssdMenu.HubtelArgs | UssdMenu.NaloArgs | UssdMenu.ArkeselArgs | UssdMenu.SouthPawslResponse): UssdMenu.UssdGatewayArgs;
 
 
-    onResult?(result: string | UssdMenu.HubtelResponse | UssdMenu.NaloResponse| UssdMenu.ArkeselResponse | UssdMenu.SouthPawslResponse): void;
+    onResult?(result: string | UssdMenu.HubtelResponse | UssdMenu.NaloResponse | UssdMenu.ArkeselResponse | UssdMenu.SouthPawslResponse): void;
 
     resolveRoute(route: string, callback: Function): void;
 
@@ -153,24 +153,24 @@ declare namespace UssdMenu {
         network: 'Tigo' | 'Airtel' | 'AirtelTigo' | 'MTN' | 'Vodafone' | 'Glo';
     }
 
-    type UssdMenuProvider = 'africasTalking' | 'hubtel' | 'emergent';
+    type UssdMenuProvider = 'africasTalking' | 'hubtel' | 'emergent' | 'arkesel';
     interface UssdMenuOptions {
         provider?: UssdMenuProvider;
     }
-    
+
     interface UssdStateOptions {
         run(): void;
         next?: NextState;
         defaultNext?: string;
     }
-    
+
     interface UssdSessionConfig {
         start(sessionId: string, callback?: Function): (Promise<any> | void);
-    
+
         end(sessionId: string, callback?: Function): (Promise<any> | void);
-    
+
         get(sessionId: string, key: string, callback?: Function): (Promise<any> | void);
-    
+
         set(sessionId: string, key: string, value: any, callback?: Function): (Promise<any> | void);
     }
 }
